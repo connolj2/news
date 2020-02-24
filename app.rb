@@ -48,12 +48,12 @@
 	for headlinetitles in @news["articles"]
 	headline_title << "#{headlinetitles["title"]}"
 	end
-	@listtitles = headline_title
+	@titles = headline_title
 	
-	view news
+	view "news"
 	end
 	
 	get "/" do
-	#show a view that asks user for a location
-	view ask
+    #show a view that asks user for a location
+    view "ask"
 	end
