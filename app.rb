@@ -9,7 +9,12 @@
 	# enter your Dark Sky API key here
     ForecastIO.api_key = "51e4b49310a5972db76a499bc4d0159a"
 
-	get "/" do
+    get "/" do
+    #show a view that asks user for a location
+    view "ask"
+	end
+
+	get "/news" do
 	
     #enter parameters and get latlong
     @results = Geocoder.search(params["q"])
@@ -52,10 +57,6 @@
 	end
 	@titles = headline_title
 	
-	view "/"
+	view "news"
 	end
 	
-	get "/news" do
-    #show a view that asks user for a location
-    view "ask"
-	end
