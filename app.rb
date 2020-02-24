@@ -19,44 +19,44 @@
 	#do everything else
 	
     #enter parameters and get latlong
-    results = Geocoder.search(params["q"])
-    latlong = results.first.coordinates
+    @results = Geocoder.search(params["q"])
+    @latlong = @results.first.coordinates
     lat = "#{latlong[0]}"
     long = "#{latlong[1]}"
-    location = params["q"]
+    @location = params["q"]
 	
 	#get current forecast 
-	forecast = ForecastIO.forecast("#{lat}","#{long}").to_hash 
-	current_temperature = forecast["currently"]["temperature"]
-	conditions = forecast["currently"]["summary"]
+	@forecast = ForecastIO.forecast("#{lat}","#{long}").to_hash 
+	@current_temperature = @forecast["currently"]["temperature"]
+	@conditions = @forecast["currently"]["summary"]
 	
 	#get forecast
 	daily_high = []
 	day_condition = []
-	for day in forecast["daily"]["data"]
+	for day in @forecast["daily"]["data"]
 	daily_high << "#{day["temperatureHigh"]}"
 	day_condition << "#{day["summary"]}"
 	#"A high temperature of #{day["temperatureHigh"]} and #{day["summary"]}."
 	end
-	temp = daily_high
-	condition = day_condition
+	@temp = daily_high
+	@condition = day_condition
 	
 	#get the news
-	url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=3c86ac58556d447d93d2dd4e13ca452a"
-	news = HTTParty.get(url).parsed_response.to_hash
+	@url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=3c86ac58556d447d93d2dd4e13ca452a"
+	@news = HTTParty.get(@url).parsed_response.to_hash
 	
 	#create arrays for links and headlines
 	headline_url = []
-	for headlines in news["articles"]
+	for headlines in @news["articles"]
 	headline_url << "#{headlines["url"]}"
     end
-    headline = headline_url
+    @headline = headline_url
 	
 	headline_title = []
-	for headlinetitles in news["articles"]
+	for headlinetitles in @news["articles"]
 	headline_title << "#{headlinetitles["title"]}"
 	end
-	titles = headline_title
+	@titles = headline_title
 	
 	view "/"
 	end
