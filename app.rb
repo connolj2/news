@@ -7,22 +7,32 @@
 	before { puts "Parameters: #{params}" } 
 	
 	# enter your Dark Sky API key here
-	ForecastIO.api_key = "e0bd1716ae7b9073004af5cd3ee90dd1"
-	
-	get "/news" do
+    ForecastIO.api_key = "51e4b49310a5972db76a499bc4d0159a"
+
+    # do the heavy lifting, use Global Hub lat/long
+    # pp = pretty print
+    # use instead of `puts` to make reading a hash a lot easier
+    # e.g. `pp forecast`
+    forecast = ForecastIO.forecast(42.0574063,-87.6722787).to_hash
+    puts forecast
+    current_temp = forecast["currently"]["temperature"]
+    condtions = forecast["currently"]["summary"]
+    pp forecast
+
+	get "/" do
 	#do everything else
 	
-	#enter parameters and get latlong
+    #enter parameters and get latlong
+    @location = params["q"]
 	@results = Geocoder.search(params["q"])
-	@location = params["q"]
-	@lat_long = @results.first.coordinates # => [lat, long]
+	@lat_long = @results.@first.coordinates 
 	
 	#get current forecast 
 	@forecast = ForecastIO.forecast(@lat_long[0], @lat_long[1]).to_hash 
 	@current_temperature = @forecast["currently"]["temperature"]
 	@conditions = @forecast["currently"]["summary"]
 	
-	#get future forecast
+	#get forecast
 	daily_high = []
 	day_condition = []
 	for day in @forecast["daily"]["data"]
@@ -41,8 +51,8 @@
 	headline_url = []
 	for headlines in @news["articles"]
 	headline_url << "#{headlines["url"]}"
-	end
-	@headline = headline_url
+    end
+    @headline = headline_url
 	
 	headline_title = []
 	for headlinetitles in @news["articles"]
@@ -50,10 +60,10 @@
 	end
 	@titles = headline_title
 	
-	view "news"
+	view "/"
 	end
 	
-	get "/" do
+	get "/news" do
     #show a view that asks user for a location
     view "ask"
 	end
