@@ -13,22 +13,20 @@
     # pp = pretty print
     # use instead of `puts` to make reading a hash a lot easier
     # e.g. `pp forecast`
-    forecast = ForecastIO.forecast(42.0574063,-87.6722787).to_hash
-    puts forecast
-    current_temp = forecast["currently"]["temperature"]
-    condtions = forecast["currently"]["summary"]
-    pp forecast
+    
 
 	get "/" do
 	#do everything else
 	
     #enter parameters and get latlong
+    @results = Geocoder.search(params["q"])
+    @latlong = @results.first.coordinates
+    lat = "#{latlong[0]}"
+    long = "#{latlong[1]}"
     @location = params["q"]
-	@results = Geocoder.search(params["q"])
-	@lat_long = @results.@first.coordinates 
 	
 	#get current forecast 
-	@forecast = ForecastIO.forecast(@lat_long[0], @lat_long[1]).to_hash 
+	@forecast = ForecastIO.forecast("#{lat}","#{long}").to_hash 
 	@current_temperature = @forecast["currently"]["temperature"]
 	@conditions = @forecast["currently"]["summary"]
 	
