@@ -9,14 +9,7 @@
 	# enter your Dark Sky API key here
     ForecastIO.api_key = "51e4b49310a5972db76a499bc4d0159a"
 
-    # do the heavy lifting, use Global Hub lat/long
-    # pp = pretty print
-    # use instead of `puts` to make reading a hash a lot easier
-    # e.g. `pp forecast`
-    
-
 	get "/" do
-	#do everything else
 	
     #enter parameters and get latlong
     @results = Geocoder.search(params["q"])
