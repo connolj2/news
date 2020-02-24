@@ -1,0 +1,59 @@
+/* Typography */
+body {
+   
+    font-family: 'Merriweather', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lobster', serif;
+  }
+
+  .navbar-brand {
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+  }
+
+  .navbar.navbar-light .navbar-brand {
+    color: teal;
+  }
+  
+  /* Navbar background color */
+  .navbar {
+    background-color: black;
+    
+  }
+  
+  .jumbotron {
+    /* Background */
+    background-attachment: local;
+    background-image: url(telly.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    
+  
+    /* Fonts */
+
+    color: purple;
+    text-shadow: 1px 1px 1px black;
+  }
+
+ /* The background color of the "testimonials" part UPDATE*/
+
+
+
+  .blockquote-footer {
+    color: lightslategray;
+    font-family: 'Merriweather', sans-serif;
+    
+  }
+
+  .testimonials {
+    background-image: url(charleston.JPG);
+    color: lightslategray;
+    text-shadow: 1px 1px 1px black;
+  }
+  
+  
+
+ 
+  

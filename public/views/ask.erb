@@ -18,12 +18,21 @@
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>News</title>
+    <title>Weather Forecast</title>
   </head>
+  <h1> "Don't Forget to Check the Weather Forecast"
   <body>
 
     <div class="container mt-5">
-      <h1>News</h1>
+      <h1>Weather</h1>
+      <p>
+      <%="Current temperature: #{@current_temperature} degrees"%>
+      </p>
+      <p>
+      <h3> Be Prepared: Upcoming Weather</h3>
+      <%=for daily_forecast in @forecast["daily"]["data"]
+      "A high temperature of #{daily_forecast["temperatureHigh"]}. #{daily_forecast["summary"]}."
+      <%end%>
     </div>
 
     <!-- Optional JavaScript -->
