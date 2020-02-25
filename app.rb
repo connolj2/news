@@ -19,12 +19,10 @@
     #enter parameters and get latlong
     @results = Geocoder.search(params["q"])
     @location = params["q"]
-    @latlong = @results.first.coordinates
-    lat = "#{latlong[0]}"
-    long = "#{latlong[1]}"
-  
+    @lat_long = @results.first.coordinates
+   
 	#get current forecast 
-	@forecast = ForecastIO.forecast("#{lat}","#{long}").to_hash 
+	@forecast = ForecastIO.forecast(@lat_long[0],@lat_long[1]).to_hash 
 	@current_temperature = @forecast["currently"]["temperature"]
 	@conditions = @forecast["currently"]["summary"]
 	

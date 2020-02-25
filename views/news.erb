@@ -23,17 +23,18 @@
 	<body>
 	
 	<div class="jumbotron">
-	<h1  class="display-4">Get Your Local Paper</h1>
-	<p   class="lead"><%= @location %> All The Important Stuff</p>
+	<h1  class="display-4">The Best Local Paper</h1>
+    <h2 class="lead"><%= @location %> </h2>
+    <p>All The Important Stuff</p>
 	</div>
 	
 	<div class="container mt-5">
 	<div class = "row-sm">
 	<h2> Current Forecast </h2>
 	</div>
-	<h4> Right now it is <%= @current_temperature %> degrees and <%= @conditions %> in <%= @location %>.</h4>
+	<h4> Right now it is <%= @current_temperature %> degrees with <%= @conditions %> in <%= @location %>.</h4>
 	<div class = "row-sm">
-	<h3> Upcoming Forecast </h3>
+	<h3> Upcoming Daily Highs and Condtions </h3>
 	</div>
 	<div class="row">
     <ul>
@@ -53,7 +54,7 @@
 	</div>
 	
 	<div class = "row-sm">
-	<h3> Top Stories </h3>
+	<h3> The Important Stuff: Today's Top Stories </h3>
 	</div>
 	
 	<% for link in @headline %>
@@ -62,7 +63,7 @@
 	<div class="card" style="width: 90rem;">
 	<div class="card-body">
 	<h5 class="card-title"><%= name %></h5>
-	<a href=<%= link %> class="card-link">Link</a>
+	<a href=<%= link %> class="card-link">Read More</a>
 	</div>
 	</div>
 	</div>
