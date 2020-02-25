@@ -23,7 +23,6 @@
     lat = "#{latlong[0]}"
     long = "#{latlong[1]}"
   
-	
 	#get current forecast 
 	@forecast = ForecastIO.forecast("#{lat}","#{long}").to_hash 
 	@current_temperature = @forecast["currently"]["temperature"]
