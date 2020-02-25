@@ -2,6 +2,7 @@
 body, p {
    
     font-family: 'Merriweather', sans-serif;
+    color: purple
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -14,6 +15,7 @@ body, p {
     background-attachment: local;
     background-repeat: no-repeat;
     background-size: auto;
+    
    
   
     /* Fonts */
